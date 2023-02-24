@@ -1,6 +1,7 @@
 package com.jaycode.awsimageupload.profile;
 
 import java.util.Objects;
+import java.util.Optional;
 import java.util.UUID;
 
 public class UserProfile {
@@ -9,7 +10,9 @@ public class UserProfile {
     private String userName;
     private String userProfileImageLink; // S3 key
 
-    public UserProfile(UUID userProfileId, String userName, String userProfileImageLink) {
+    public UserProfile(UUID userProfileId,
+                       String userName,
+                       String userProfileImageLink) {
         this.userProfileId = userProfileId;
         this.userName = userName;
         this.userProfileImageLink = userProfileImageLink;
@@ -23,8 +26,8 @@ public class UserProfile {
         return userName;
     }
 
-    public String getUserProfileImageLink() {
-        return userProfileImageLink;
+    public Optional<String> getUserProfileImageLink() {
+        return Optional.ofNullable(userProfileImageLink);
     }
 
     public void setUserProfileId(UUID userProfileId) {
